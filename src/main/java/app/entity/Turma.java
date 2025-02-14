@@ -1,4 +1,4 @@
-package app.entily;
+package app.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,16 +10,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-public class Curso {
+
+public class Turma {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@NotBlank
 	private String nome;
+	
+	private String semestre;
+	private long ano;
+	private String turno;
+	
+
 }
