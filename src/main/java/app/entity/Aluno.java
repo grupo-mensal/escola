@@ -1,5 +1,7 @@
 package app.entity;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +27,7 @@ public class Aluno {
 	@NotBlank
 	@Pattern(regexp = "^\\S+\\s+\\S+.*$")
 	private String nome;
-	@org.hibernate.validator.constraints.br.CPF
+	@CPF
 	private String CPF;
 	@Pattern(regexp = "^\\([1-9]{2}\\) (?:[2-8]|9[0-9])[0-9]{3}\\-[0-9]{4}$")
 	private String telefone;
