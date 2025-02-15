@@ -19,7 +19,7 @@ import app.entity.Professor;
 import app.service.ProfessorService;
 
 @RestController
-@RequestMapping("api/professor")
+@RequestMapping("/api/professor")
 public class ProfessorController {
 	@Autowired
 
@@ -63,7 +63,7 @@ public class ProfessorController {
 	public ResponseEntity<String> update(@PathVariable long id, @RequestBody Professor professor){
 		try {
 
-			String mensagem = this.professorService.save(professor);
+			String mensagem = this.professorService.update(professor, id);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
 		}catch (Exception e){

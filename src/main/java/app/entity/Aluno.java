@@ -1,11 +1,12 @@
 package app.entity;
 
-import org.hibernate.validator.constraints.br.CPF;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -31,6 +32,8 @@ public class Aluno {
 	@Pattern(regexp = "^\\([1-9]{2}\\) (?:[2-8]|9[0-9])[0-9]{3}\\-[0-9]{4}$")
 	private String telefone;
 	
-	
+	@ManyToOne
+	@JoinColumn(name = "turma_id")
+	private Turma turma;
 
 }

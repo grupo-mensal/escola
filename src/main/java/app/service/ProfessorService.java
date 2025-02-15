@@ -29,10 +29,11 @@ public Professor findById(long id) {
 		return professor;
 	}
 	
-	public String update(Curso curso, long id) {
-		
+	public String update(Professor professor, long id) {
+		professor.setId(id);
+		this.professorRepository.save(professor);
 
-		return  curso.getNome() + " foi atualizado com sucesso!";
+		return  professor.getNome() + " foi atualizado com sucesso!";
 	}
 	
 	public List<Professor> findAll(){
@@ -44,6 +45,7 @@ public Professor findById(long id) {
 	}
 	
 	public String delete(long id) {
+		this.professorRepository.deleteById(id);
 		return "O Professor foi deletado";
 	}
 

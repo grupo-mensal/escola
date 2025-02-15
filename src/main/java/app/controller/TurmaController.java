@@ -63,7 +63,7 @@ public class TurmaController {
 	public ResponseEntity<String> update(@PathVariable long id, @RequestBody Turma turma){
 		try {
 
-			String mensagem = this.turmaService.save(turma);
+			String mensagem = this.turmaService.update(turma, id);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
 		}catch (Exception e){

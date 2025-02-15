@@ -63,7 +63,7 @@ public class CursoController {
 	@PutMapping("/update/{id}")
 	public ResponseEntity<String> update(@PathVariable long id, @RequestBody Curso curso){
 		try {
-			String mensagem = this.cursoService.save(curso);
+			String mensagem = this.cursoService.update(curso, id);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
 		}catch (Exception e){

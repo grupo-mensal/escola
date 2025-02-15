@@ -1,11 +1,12 @@
 package app.entity;
 
-import org.hibernate.validator.constraints.br.CPF;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -29,11 +30,15 @@ public class Professor {
 	@NotBlank
 	@Pattern(regexp = "^\\S+\\s+\\S+.*$")
 	private String nome;
-	@CPF
+	//@CPF
+	@Pattern(regexp = "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$")
 	private String CPF;
 	@Email
 	private String email;
 	@Pattern(regexp = "^\\S+\\s+\\S+.*$")
 	private String especialidade;
+	
+	@ManyToMany(mappedBy = "professores")
+	private List<Turma> turma;
 
 }

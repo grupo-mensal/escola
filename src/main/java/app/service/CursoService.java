@@ -30,7 +30,8 @@ public class CursoService {
 	}
 	
 	public String update(Curso curso, long id) {
-		
+		curso.setId(id);
+		this.cursoRepository.save(curso);
 
 		return  curso.getNome() + " foi atualizado com sucesso!";
 	}
@@ -44,6 +45,7 @@ public class CursoService {
 	}
 	
 	public String delete(long id) {
+		this.cursoRepository.deleteById(id);
 		return "O curso foi deletado";
 	}
 

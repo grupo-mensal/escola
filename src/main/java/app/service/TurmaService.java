@@ -30,7 +30,8 @@ public class TurmaService {
 	}
 	
 	public String update(Turma turma, long id) {
-		
+		turma.setId(id);
+		this.turmaRepository.save(turma);
 
 		return  turma.getNome() + " foi atualizado com sucesso!";
 	}
@@ -44,6 +45,7 @@ public class TurmaService {
 	}
 	
 	public String delete(long id) {
+		this.turmaRepository.deleteById(id);
 		return "A turma foi deletado";
 	}
 
