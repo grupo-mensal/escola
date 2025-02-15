@@ -19,7 +19,7 @@ public class AlunoService {
 		
 		this.alunoRepository.save(aluno);
 		
-		return "o Aluno " + aluno.getNome() + " foi salvo com sucesso";
+		return "o Aluno " + aluno.getNome() + aluno.getCPF() + " foi salvo com sucesso";
 	}
 	
 	public Aluno findById(long id) {

@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Aluno;
 import app.service.AlunoService;
+import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("api/aluno")
+@RequestMapping("/api/aluno")
 public class AlunoController {
 	@Autowired
 
@@ -62,10 +63,10 @@ public class AlunoController {
 		}
 	}
 	@PutMapping("/update/{id}")
-	public ResponseEntity<String> update(@PathVariable long id, @RequestBody Aluno aluno){
+	public ResponseEntity<String> update(@Valid @PathVariable long id, @RequestBody Aluno aluno){
 		try {
 
-			String mensagem = this.alunoService.save(aluno);
+			String mensagem = this.alunoService.update(aluno, id);
 
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
