@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import app.entity.Aluno;
 import app.entity.Curso;
 import app.service.CursoService;
 
@@ -21,12 +22,16 @@ import app.service.CursoService;
 @RequestMapping("api/curso")
 public class CursoController {
 	@Autowired
+
 	private CursoService cursoService;
+
 	
 	@PostMapping("/save")
 	public ResponseEntity<String> save(@RequestBody Curso curso){
 		try {
+
 			String mensagem = this.cursoService.save(curso);
+
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
 		}catch (Exception e){
@@ -37,6 +42,7 @@ public class CursoController {
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete(@PathVariable long id){
 		try {
+
 			String mensagem = this.cursoService.delete(id);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
@@ -45,11 +51,11 @@ public class CursoController {
 		}
 	}
 	@GetMapping("/findById/{id}")
+
 	public ResponseEntity<Curso>findById(@PathVariable long id) {
 		try {
 			Curso curso = this.cursoService.findById(id);
 			return new ResponseEntity<>(curso, HttpStatus.OK);
-			
 		}catch (Exception e){
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}

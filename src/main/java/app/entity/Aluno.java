@@ -18,7 +18,6 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Aluno {
 	
 	@Id
@@ -27,8 +26,6 @@ public class Aluno {
 	@NotBlank
 	@Pattern(regexp = "^\\S+\\s+\\S+.*$")
 	private String nome;
-	
-	
 	@NotBlank
 	@Pattern(regexp = "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$")
 	private String CPF;

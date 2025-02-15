@@ -1,5 +1,6 @@
 package app.service;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,4 +47,5 @@ public class AlunoService {
 		this.alunoRepository.deleteById(id);
 		return "O aluno foi deletado";
 	}
+
 }

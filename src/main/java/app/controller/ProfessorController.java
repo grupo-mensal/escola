@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import app.entity.Aluno;
 import app.entity.Professor;
 import app.service.ProfessorService;
 
@@ -21,6 +22,7 @@ import app.service.ProfessorService;
 @RequestMapping("api/professor")
 public class ProfessorController {
 	@Autowired
+
 	private ProfessorService professorService;
 	
 	@PostMapping("/save")
@@ -37,7 +39,9 @@ public class ProfessorController {
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete(@PathVariable long id){
 		try {
+
 			String mensagem = this.professorService.delete(id);
+
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
 		}catch (Exception e){
@@ -45,6 +49,7 @@ public class ProfessorController {
 		}
 	}
 	@GetMapping("/findById/{id}")
+
 	public ResponseEntity<Professor>findById(@PathVariable long id) {
 		try {
 			Professor professor = this.professorService.findById(id);
@@ -57,6 +62,7 @@ public class ProfessorController {
 	@PutMapping("/update/{id}")
 	public ResponseEntity<String> update(@PathVariable long id, @RequestBody Professor professor){
 		try {
+
 			String mensagem = this.professorService.save(professor);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
