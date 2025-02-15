@@ -16,17 +16,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Aluno;
 import app.entity.Professor;
+import app.service.ProfessorService;
 
 @RestController
 @RequestMapping("api/professor")
 public class ProfessorController {
 	@Autowired
-	private ProfessorController professorController;
+
+	private ProfessorService professorService;
 	
 	@PostMapping("/save")
-	public ResponseEntity<String> save(@RequestBody Aluno aluno){
+	public ResponseEntity<String> save(@RequestBody Professor professor){
 		try {
-			String Mensagem = this.professorService.save(aluno);
+			String mensagem = this.professorService.save(professor);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
 		}catch (Exception e){
@@ -37,7 +39,9 @@ public class ProfessorController {
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete(@PathVariable long id){
 		try {
-			String Mensagem = this.professorService.delete(id);
+
+			String mensagem = this.professorService.delete(id);
+
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
 		}catch (Exception e){
@@ -45,10 +49,11 @@ public class ProfessorController {
 		}
 	}
 	@GetMapping("/findById/{id}")
-	public ResponseEntity<professor>findById(@PatchVariable long id) {
+
+	public ResponseEntity<Professor>findById(@PathVariable long id) {
 		try {
-			Aluno aluno = this.professorService.findById(id);
-			return new ResponseEntity<>(aluno, HttpStatus.OK);
+			Professor professor = this.professorService.findById(id);
+			return new ResponseEntity<>(professor, HttpStatus.OK);
 			
 		}catch (Exception e){
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -57,7 +62,8 @@ public class ProfessorController {
 	@PutMapping("/update/{id}")
 	public ResponseEntity<String> update(@PathVariable long id, @RequestBody Professor professor){
 		try {
-			String Mensagem = this.professorService.save(professor);
+
+			String mensagem = this.professorService.save(professor);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
 		}catch (Exception e){

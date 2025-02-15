@@ -15,17 +15,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Aluno;
+import app.service.AlunoService;
 
 @RestController
 @RequestMapping("api/aluno")
 public class AlunoController {
 	@Autowired
-	private AlunoController alunoController;
+
+	private AlunoService alunoService;
+
 	
 	@PostMapping("/save")
 	public ResponseEntity<String> save(@RequestBody Aluno aluno){
 		try {
-			String Mensagem = this.alunoService.save(aluno);
+
+			String mensagem = this.alunoService.save(aluno);
+
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
 		}catch (Exception e){
@@ -36,7 +41,9 @@ public class AlunoController {
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete(@PathVariable long id){
 		try {
-			String Mensagem = this.alunoService.delete(id);
+
+			String mensagem = this.alunoService.delete(id);
+
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
 		}catch (Exception e){
@@ -44,7 +51,8 @@ public class AlunoController {
 		}
 	}
 	@GetMapping("/findById/{id}")
-	public ResponseEntity<aluno>findById(@PatchVariable long id) {
+	public ResponseEntity<Aluno>findById(@PathVariable long id) {
+
 		try {
 			Aluno aluno = this.alunoService.findById(id);
 			return new ResponseEntity<>(aluno, HttpStatus.OK);
@@ -56,7 +64,9 @@ public class AlunoController {
 	@PutMapping("/update/{id}")
 	public ResponseEntity<String> update(@PathVariable long id, @RequestBody Aluno aluno){
 		try {
-			String Mensagem = this.alunoService.save(aluno);
+
+			String mensagem = this.alunoService.save(aluno);
+
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
 		}catch (Exception e){

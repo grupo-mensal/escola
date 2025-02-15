@@ -16,17 +16,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Aluno;
 import app.entity.Turma;
+import app.service.TurmaService;
 
 @RestController
 @RequestMapping("api/turma")
 public class TurmaController {
+
+	
 	@Autowired
-	private TurmaController turmaController;
+	private TurmaService turmaService;
+
 	
 	@PostMapping("/save")
 	public ResponseEntity<String> save(@RequestBody Turma turma){
 		try {
-			String Mensagem = this.turmaService.save(aluno);
+			String mensagem = this.turmaService.save(turma);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
 		}catch (Exception e){
@@ -37,7 +41,8 @@ public class TurmaController {
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete(@PathVariable long id){
 		try {
-			String Mensagem = this.turmaService.delete(id);
+
+			String mensagem = this.turmaService.delete(id);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
 		}catch (Exception e){
@@ -45,10 +50,10 @@ public class TurmaController {
 		}
 	}
 	@GetMapping("/findById/{id}")
-	public ResponseEntity<turma>findById(@PatchVariable long id) {
+	public ResponseEntity<Turma>findById(@PathVariable long id) {
 		try {
-			Aluno aluno = this.turmaService.findById(id);
-			return new ResponseEntity<>(aluno, HttpStatus.OK);
+			Turma turma = this.turmaService.findById(id);
+			return new ResponseEntity<>(turma, HttpStatus.OK);
 			
 		}catch (Exception e){
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -57,7 +62,8 @@ public class TurmaController {
 	@PutMapping("/update/{id}")
 	public ResponseEntity<String> update(@PathVariable long id, @RequestBody Turma turma){
 		try {
-			String Mensagem = this.turmaService.save(turma);
+
+			String mensagem = this.turmaService.save(turma);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 			
 		}catch (Exception e){
