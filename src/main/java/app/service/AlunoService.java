@@ -47,5 +47,17 @@ public class AlunoService {
 		this.alunoRepository.deleteById(id);
 		return "O aluno foi deletado";
 	}
+	public List<Aluno> buscarPorNome(String nome) {
+        return alunoRepository.findByNomeStartingWith(nome);
+    }
 
+    // Buscar alunos por QUALQUER PARTE do número de telefone
+    public List<Aluno> buscarPorTelefone(String telefone) {
+        return alunoRepository.findByTelefoneContaining(telefone);
+    }
+
+    // Buscar alunos pelo nome da turma
+    public List<Aluno> buscarPorNomeTurma(String nomeTurma) {
+        return alunoRepository.findByTurma_Nome(nomeTurma);
+    }
 }

@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.entity.Aluno;
 import app.entity.Curso;
 import app.service.CursoService;
 
@@ -80,5 +80,9 @@ public class CursoController {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
-	
+	@GetMapping("/buscar-por-nome")
+    public ResponseEntity<List<Curso>> buscarPorNome(@RequestParam String nome) {
+        List<Curso> cursos = cursoService.buscarPorNome(nome);
+        return ResponseEntity.ok(cursos);
+    }
 	}

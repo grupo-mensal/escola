@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.entity.Aluno;
 import app.entity.Turma;
 import app.service.TurmaService;
 
@@ -80,5 +80,28 @@ public class TurmaController {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
+	@GetMapping("/buscar-por-ano")
+    public ResponseEntity<List<Turma>> buscarPorAnoEntre(@RequestParam int anoInicio, @RequestParam int anoFim) {
+        List<Turma> turmas = turmaService.buscarPorAnoEntre(anoInicio, anoFim);
+        return ResponseEntity.ok(turmas);
+    }
+
+    @GetMapping("/buscar-por-semestre-e-ano")
+    public ResponseEntity<List<Turma>> buscarPorSemestreEAnho(@RequestParam int semestre, @RequestParam int ano) {
+        List<Turma> turmas = turmaService.buscarPorSemestreEAnho(semestre, ano);
+        return ResponseEntity.ok(turmas);
+    }
+
+    @GetMapping("/buscar-por-nome-e-turno")
+    public ResponseEntity<List<Turma>> buscarPorNomeETurno(@RequestParam String nome, @RequestParam String turno) {
+        List<Turma> turmas = turmaService.buscarPorNomeETurno(nome, turno);
+        return ResponseEntity.ok(turmas);
+    }
+
+    @GetMapping("/buscar-por-curso")
+    public ResponseEntity<List<Turma>> buscarPorNomeCurso(@RequestParam String nomeCurso) {
+        List<Turma> turmas = turmaService.buscarPorNomeCurso(nomeCurso);
+        return ResponseEntity.ok(turmas);
+    }
 	
 	}

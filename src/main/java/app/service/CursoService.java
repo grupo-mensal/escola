@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import app.entity.Aluno;
 import app.entity.Curso;
 import app.repository.CursoRepository;
 
@@ -48,5 +47,7 @@ public class CursoService {
 		this.cursoRepository.deleteById(id);
 		return "O curso foi deletado";
 	}
-
+	public List<Curso> buscarPorNome(String nome) {
+        return cursoRepository.findByNomeIgnoreCase(nome);
+    }
 }

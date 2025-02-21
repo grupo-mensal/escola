@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import app.entity.Curso;
 import app.entity.Professor;
 import app.repository.ProfessorRepository;
 
@@ -48,5 +47,19 @@ public Professor findById(long id) {
 		this.professorRepository.deleteById(id);
 		return "O Professor foi deletado";
 	}
+	public List<Professor> buscarPorNomeOuEspecialidade(String nome, String especialidade) {
+        return professorRepository.findByNomeStartingWithOrEspecialidadeStartingWith(nome, especialidade);
+    }
+
+    // Buscar professores que NÃO possuem "@gmail.com" no e-mail
+    public List<Professor> buscarNaoGmail() {
+        return professorRepository.findByEmailNotLike("%@gmail.com");
+    }
+
+    // Buscar professor por e-mail exato
+    public Professor buscarPorEmail(String email) {
+        return professorRepository.findByEmail(email);
+    }
+
 
 }

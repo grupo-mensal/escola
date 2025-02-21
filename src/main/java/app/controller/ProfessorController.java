@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.entity.Aluno;
 import app.entity.Professor;
 import app.service.ProfessorService;
 
@@ -80,5 +80,26 @@ public class ProfessorController {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
+	@GetMapping("/buscar-por-nome-ou-especialidade")
+    public ResponseEntity<List<Professor>> buscarPorNomeOuEspecialidade(
+        @RequestParam String nome, 
+        @RequestParam String especialidade) {
+        
+        List<Professor> professores = professorService.buscarPorNomeOuEspecialidade(nome, especialidade);
+        return ResponseEntity.ok(professores);
+    }
+
+    @GetMapping("/nao-gmail")
+    public ResponseEntity<List<Professor>> buscarNaoGmail() {
+        List<Professor> professores = professorService.buscarNaoGmail();
+        return ResponseEntity.ok(professores);
+    }
+
+    @GetMapping("/buscar-por-email")
+    public ResponseEntity<Professor> buscarPorEmail(@RequestParam String email) {
+        Professor professor = professorService.buscarPorEmail(email);
+        return professor != null ? ResponseEntity.ok(professor) : ResponseEntity.notFound().build();
+    }
+}
 	
-	}
+	
