@@ -5,11 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-<<<<<<< Updated upstream
-=======
-import app.entity.Aluno;
-import app.entity.Curso;
->>>>>>> Stashed changes
 import app.entity.Professor;
 import app.repository.ProfessorRepository;
 
@@ -66,12 +61,12 @@ public Professor findById(long id) {
         return professorRepository.findByNomeStartingWithOrEspecialidadeStartingWith(nome, especialidade);
     }
 
-    // Buscar professores que NÃO possuem "@gmail.com" no e-mail
+
     public List<Professor> buscarNaoGmail() {
         return professorRepository.findByEmailNotLike("%@gmail.com");
     }
 
-    // Buscar professor por e-mail exato
+
     public Professor buscarPorEmail(String email) {
         return professorRepository.findByEmail(email);
     }
