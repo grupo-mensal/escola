@@ -48,5 +48,20 @@ public class TurmaService {
 		this.turmaRepository.deleteById(id);
 		return "A turma foi deletado";
 	}
+	public List<Turma> buscarPorAnoEntre(int anoInicio, int anoFim) {
+        return turmaRepository.findByAnoBetween(anoInicio, anoFim);
+    }
+
+    public List<Turma> buscarPorSemestreEAnho(int semestre, int ano) {
+        return turmaRepository.findBySemestreAndAno(semestre, ano);
+    }
+
+    public List<Turma> buscarPorNomeETurno(String nome, String turno) {
+        return turmaRepository.findByNomeAndTurno(nome, turno);
+    }
+
+    public List<Turma> buscarPorNomeCurso(String nomeCurso) {
+        return turmaRepository.findByCurso_Nome(nomeCurso);
+    }
 
 }

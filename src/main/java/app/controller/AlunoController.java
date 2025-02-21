@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Aluno;
@@ -84,11 +85,26 @@ public class AlunoController {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
-	
+	@GetMapping("/buscar-por-nome")
+    public ResponseEntity<List<Aluno>> buscarPorNome(@RequestParam String nome) {
+        List<Aluno> alunos = alunoService.buscarPorNome(nome);
+        return ResponseEntity.ok(alunos);
+    }
+
+    @GetMapping("/buscar-por-telefone")
+    public ResponseEntity<List<Aluno>> buscarPorTelefone(@RequestParam String telefone) {
+        List<Aluno> alunos = alunoService.buscarPorTelefone(telefone);
+        return ResponseEntity.ok(alunos);
+    }
+
+    @GetMapping("/buscar-por-turma")
+    public ResponseEntity<List<Aluno>> buscarPorNomeTurma(@RequestParam String nomeTurma) {
+        List<Aluno> alunos = alunoService.buscarPorNomeTurma(nomeTurma);
+       return ResponseEntity.ok(alunos);
 	
 	}
 		
-	
+}
 		
 
 	
