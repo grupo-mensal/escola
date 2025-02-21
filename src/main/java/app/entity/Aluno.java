@@ -30,6 +30,7 @@ public class Aluno {
 	private String CPF;
 	@Pattern(regexp = "^\\([1-9]{2}\\) (?:[2-8]|9[0-9])[0-9]{3}\\-[0-9]{4}$")
 	private String telefone;
+	private Boolean cadastroCompleto;
 	
 	@ManyToOne
 	@JoinColumn(name = "turma_id")

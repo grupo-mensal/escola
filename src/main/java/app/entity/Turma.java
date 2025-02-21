@@ -31,8 +31,8 @@ public class Turma {
 	@NotBlank
 	private String nome;
 	
-	private String semestre;
-	private String ano;
+	private int semestre;
+	private int ano;
 	private String turno;
 	
 	@ManyToMany

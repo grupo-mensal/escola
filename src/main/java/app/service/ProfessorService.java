@@ -5,6 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+<<<<<<< Updated upstream
+=======
+import app.entity.Aluno;
+import app.entity.Curso;
+>>>>>>> Stashed changes
 import app.entity.Professor;
 import app.repository.ProfessorRepository;
 
@@ -15,6 +20,16 @@ public class ProfessorService {
 	private ProfessorRepository professorRepository;
 	
 	public String save(Professor professor) {
+		
+		Professor prof = this.professorRepository.findByEmail(professor.getEmail());
+		if(prof != null) {
+			throw new RuntimeException("Ja esxiste um proffesor cadastrado com o "+prof.getCPF());
+		}
+		
+		
+		if(professor.getEmail().contains("@outlook.com")) {
+			throw new RuntimeException("Nao pode cadastrar email com outlook");
+		}
 		
 		this.professorRepository.save(professor);
 		
