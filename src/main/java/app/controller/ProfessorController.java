@@ -80,7 +80,7 @@ public class ProfessorController {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
-	@GetMapping("/buscar-por-nome-ou-especialidade")
+	@GetMapping("/buscarporNomeouEspecialidade")
     public ResponseEntity<List<Professor>> buscarPorNomeOuEspecialidade(
         @RequestParam String nome, 
         @RequestParam String especialidade) {
@@ -89,13 +89,13 @@ public class ProfessorController {
         return ResponseEntity.ok(professores);
     }
 
-    @GetMapping("/nao-gmail")
+    @GetMapping("/naogmail")
     public ResponseEntity<List<Professor>> buscarNaoGmail() {
         List<Professor> professores = professorService.buscarNaoGmail();
         return ResponseEntity.ok(professores);
     }
 
-    @GetMapping("/buscar-por-email")
+    @GetMapping("/buscarporEmail")
     public ResponseEntity<Professor> buscarPorEmail(@RequestParam String email) {
         Professor professor = professorService.buscarPorEmail(email);
         return professor != null ? ResponseEntity.ok(professor) : ResponseEntity.notFound().build();

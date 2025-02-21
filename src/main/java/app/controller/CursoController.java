@@ -80,7 +80,7 @@ public class CursoController {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
-	@GetMapping("/buscar-por-nome")
+	@GetMapping("/buscarpornome")
     public ResponseEntity<List<Curso>> buscarPorNome(@RequestParam String nome) {
         List<Curso> cursos = cursoService.buscarPorNome(nome);
         return ResponseEntity.ok(cursos);
